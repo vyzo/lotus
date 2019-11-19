@@ -507,6 +507,10 @@ func (syncer *Syncer) ValidateBlock(ctx context.Context, b *types.FullBlock) err
 	}
 
 	// fast checks first
+	if b.BlockSig == nil {
+		return xerrors.Errorf("block had nil signature")
+	}
+
 	if h.Timestamp > uint64(time.Now().Unix()+build.AllowableClockDrift) {
 		return xerrors.Errorf("block was from the future")
 	}
