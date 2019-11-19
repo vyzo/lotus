@@ -52,7 +52,7 @@ func makeTs(t *testing.T, h uint64, msgcid cid.Cid) *types.TipSet {
 			Height: h,
 			Miner:  a,
 
-			Tickets: []*types.Ticket{{[]byte{byte(h % 2)}}},
+			Ticket: &types.Ticket{[]byte{byte(h % 2)}},
 
 			ParentStateRoot:       dummyCid,
 			Messages:              msgcid,
@@ -62,7 +62,7 @@ func makeTs(t *testing.T, h uint64, msgcid cid.Cid) *types.TipSet {
 			Height: h,
 			Miner:  b,
 
-			Tickets: []*types.Ticket{{[]byte{byte((h + 1) % 2)}}},
+			Ticket: &types.Ticket{[]byte{byte((h + 1) % 2)}},
 
 			ParentStateRoot:       dummyCid,
 			Messages:              msgcid,
